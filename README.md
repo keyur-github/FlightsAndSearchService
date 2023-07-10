@@ -33,10 +33,11 @@
   - One airport can have many flights but a flight belongs to one airport.
 
 
-## Flights Table
+## Tables
 
-- id : unique id to identify the flights
-- 
+### City → id, name, created_at, updated_at 
+### Airport → id, name, address, city_id, created_at, updated_at 
+    Relationship → City has many airports and Airport belongs to one city. (One to many)
 
 
 <!-- / 
