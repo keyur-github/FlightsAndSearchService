@@ -2,6 +2,8 @@ const { CityRepository } = require('../repository/index');
 
 class CityService {
 
+    // Here we require CityRepository class object to access functions of CityRepository class cause the functions inside CityRepository class are not static.
+
     constructor() {
         this.cityRepository = new CityRepository();
     }
@@ -10,6 +12,17 @@ class CityService {
         try {
             const city = await this.cityRepository.createCity(data);
             return city;
+        } 
+        catch (error) {
+            console.log("Something went wrong at Service layer");
+            throw {error};
+        }
+    }
+
+    async createCities(arr) {
+        try {
+            const cities = await this.cityRepository.createCities(arr);
+            return cities;
         } 
         catch (error) {
             console.log("Something went wrong at Service layer");

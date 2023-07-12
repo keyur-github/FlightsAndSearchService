@@ -7,7 +7,6 @@ const { PORT } = require('./config/serverConfig')
 const ApiRoutes = require('./routes/index');
 const db = require('./models/index');
 
-
 const setupAndStartServer = async () => {    
     // Create the express object
     const app = express();
@@ -23,7 +22,7 @@ const setupAndStartServer = async () => {
         if(process.env.SYNC_DB) {
             db.sequelize.sync({alter:true});
         }
-        
+
     });
 }
 

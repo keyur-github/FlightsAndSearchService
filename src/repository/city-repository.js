@@ -4,10 +4,21 @@ const { City } = require('../models/index');
 
 class CityRepository {
     
+    // Here you don't need to create object for City class because the create, bulkCreate, destroy, etc all this functions provide by sequelize model are static. And static functions don't require object to call those functions
     async createCity({name}) {
         try {
             const city = await City.create({name});
             return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    } 
+    
+    async createCities(arr) {
+        try {
+            const cities = await City.bulkCreate(arr);
+            return cities;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
             throw {error};

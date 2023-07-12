@@ -24,6 +24,27 @@ const create = async (req, res) => {
     }
 }
 
+const bulkCreate = async (req, res) => {
+    try {
+        const cities = await cityService.createCities(req.body);
+        return res.status(201).json({
+            data: cities,
+            success: true,
+            message: "Successfully created the cities",
+            err: {}
+        });
+    } 
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to create the cities",
+            err: error
+        });
+    }
+}
+
 // DELETE /city/:id -> id = req.params.id
 const destroy = async (req, res) => {
     try {
@@ -114,6 +135,7 @@ const getAll = async (req, res) => {
 
 module.exports = {
     create,
+    bulkCreate,
     destroy,
     get,
     update,
